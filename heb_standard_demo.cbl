@@ -29,8 +29,8 @@
       *-----------------------------------------------------------------
        01  H00.
            03  H01-KELET-OVED.
-           03  H04-KELET-CHODESH-LEDILUG
-                                           VALUE "Please type salary".
+           03  H04-HODAA-LEDUGMA           VALUE 
+               "the string should start undernearth the letter H".
 
 
       *-----------------------------------------------------------------
@@ -39,10 +39,11 @@
        01  IX00.
            03  IX01-OVED                   PIC 9.
            03  IX02-CHODESH                PIC 9.
+           03  IX03-I                      PIC 99.
       *-----------------------------------------------------------------
       *Kxx-KELET
       *-----------------------------------------------------------------
-
+       K01-MIS                             PIC 99.
       *-----------------------------------------------------------------
       *Mxx-MONIM
       *-----------------------------------------------------------------
@@ -99,3 +100,22 @@
            .
        B-EXIT.
            EXIT.
+      *------------------------------------------------------------------
+       C-CHISUV                                                          
+      *------------------------------------------------------------------
+       C-00.
+      * when there is a long sentence that is splitted among multiple
+      * lines ("סעיפים"):
+      *      1. make sure that each line in the sentence 
+      *         (except te first line) will be indented. this way it
+      *         will be easier to see that the line is just a
+      *         continuation of a sentence and not a new sentence.
+          PERFORM B-KELET 
+                  VARYING IX03-I 
+                  FROM 1 BY 1 
+                  UNTIL IX03 > 10
+          DISPLAY "index is"
+                  IX03-I
+          .
+       C-EXIT.
+          EXIT.
