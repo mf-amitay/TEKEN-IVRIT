@@ -107,10 +107,14 @@
       * when there is a long sentence that is splitted among multiple
       * lines ("סעיפים"):
       *      1. make sure that each line in the sentence 
-      *         (except te first line) will be indented. this way it
+      *         (except te first line) will be indented
+      *         (at least 4 spaces). this way it
       *         will be easier to see that the line is just a
       *         continuation of a sentence and not a new sentence.
-          PERFORM B-KELET 
+      *      2. try to put the starting of the next line
+      *         in the sentence exactly under the start of a word in
+      *         the line above it.
+          PERFORM B-KELET      
                   VARYING IX03-I 
                   FROM 1 BY 1 
                   UNTIL IX03 > 10
